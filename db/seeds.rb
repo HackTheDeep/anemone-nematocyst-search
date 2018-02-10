@@ -1,7 +1,42 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+feature_descriptions = [
+  "cell length",
+  "cell width",
+  "capsule length",
+  "capsule width",
+]
+
+feature_descriptions.each do |desc|
+  Feature.create!(:desc => desc)
+end
+
+images = [
+  "image001.tiff",
+  "image002.tiff",
+  "image003.tiff",
+  "image004.tiff",
+  "image005.tiff",
+  "image006.tiff",
+  "image007.tiff",
+  "image008.tiff",
+  "image009.tiff",
+]
+
+images.each do |filename|
+  Image.create!(:filename => filename)
+end
+
+features = Feature.all
+Image.all.each do |image|
+  features.each do |feature|
+    metric = if feature.desc.match(/length/)
+      rand(100) + 50
+    else
+      rand(20)
+    end
+    Measurement.create!(
+      :image => image,
+      :feature => feature,
+      :metric => metric,
+    )
+  end
+end
