@@ -2,35 +2,31 @@ $(function() {
   $('.search').click(function(e) {
     e.preventDefault();
 
-    var featureParams = [
-      {
-        id: 1,
-        min: 3,
-        max: 15
+    var featureParams = {
+      1: {
+        min: 2,
+        max: 3
       },
-      {
-        id: 2,
+      2: {
         min: 5,
         max: 10
       },
-        {
-        id: 3,
+      3: {
         min: 15,
         max: 35
       },
-        {
-        id: 4,
+      4: {
         min: 6,
         max: 12
       }
-    ]
-    var params = { features: featureParams }
+    }
 
     $.ajax({
       method: 'GET',
-      url: '/search?' + $.param(params);
+      url: '/search?' + $.param(featureParams)
     }).done(function(response) {
       // render the images
+      $('#results').append(response);
     });
   });
 });
