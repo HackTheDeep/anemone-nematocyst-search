@@ -2,7 +2,7 @@ class MainController < ApplicationController
 
   # GET /search
   #
-  # {
+  # params should equal -> {
   #   :features => [
   #     {
   #       :id => 1
@@ -25,12 +25,16 @@ class MainController < ApplicationController
   # &features[][max]=90
   # &features[][min]=30
   #
+  #
+  # GET /search
   def search
     results = Measurement.search(params)
+    attr_whitelist = [:feature_id, :metric]
 
-    render :json => results.map(&:metric)
+    render :json => present(results, attr_whitelist)
   end
 
+  # GET /features
   def features
     features = Feature.all
     attr_whitelist = [:id, :desc]
