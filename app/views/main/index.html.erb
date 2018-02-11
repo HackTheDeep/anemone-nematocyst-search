@@ -1,1 +1,37 @@
-<p>This is the main page</p>
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-sm-10">
+      <h3>Cnideria Stinger</h3>
+      <h5>Reclassify Cnidarians</h5>
+    </div>
+    <div class="col-sm-2">
+      <div class="logo">
+        <%= image_tag "logo_amnh.jpg" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Organelle Size Range</p>
+      <form>
+        <div>
+          <input type="text" class="sliderValue" data-index="0" value="10" />
+          <input type="text" class="sliderValue" data-index="1" value="90" />
+        </div>
+        <br />
+        <div id="slider"></div>
+      </form>
+      <p>Capsule Size Range</p>
+      <form>
+        <div>
+          <input type="text" class="sliderValue" data-index="0" value="10" />
+          <input type="text" class="sliderValue" data-index="1" value="90" />
+        </div>
+        <br />
+        <div id="slider"></div>
+      </form>
+    </div>
+    <div class="col-sm-6">
+    </div>
+  </div>
+</div>
