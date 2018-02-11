@@ -3,15 +3,32 @@ body {
     font-size: 12px;
     background-color: #999;
     padding: 0;
-    margin: 0
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 0px;
 
+}
+
+h1.header{
+	color: #000;
+	font-family: verdana;
 }
 
 .Header {
 	background-color: #0a56a4;
 	padding: 0 0 0 0;
 	height: 100px;
-	width: 100%;
+	width: 100%; 
+	margin-top: 0px;
+}
+
+.Footer {
+	background-color: #0a56a4;
+	padding: 0 0 0 0;
+	height: 100px;
+	width: 100%; 
+	margin-top: 0px;
+	bottom: 0px;
 }
 
 .logo{
@@ -19,13 +36,31 @@ body {
 	background-image: url("../imgs/logo_amnh.jpg");
 	top: 0;
     right: 0;
-    width: 300px;
-    height: 75px;
+    width: 500px;
+    height: 100%;
+    background-repeat: no-repeat;
 
 
 }
 
-img.logo {
 
-    height: auto;
+.mechanism{
+	position: absolute;
+	background-image: url("../imgs/nematocyst_mechanism.gif");
+	bottom:0;
+    left: 0px;
+    width: 500px;
+    height: 100%;
+    background-repeat: no-repeat;
+
+
+}
+
+.imageArea{
+	position: absolute;
+	top: 276px;
+	width: 50%;
+	height: 50%;
+	color: #222;
+	left: 576px;
 }

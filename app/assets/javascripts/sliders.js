@@ -3,7 +3,7 @@
 $(document).ready(function() {
     $("#slider").slider({
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         values: [10, 90],
         slide: function(event, ui) {
