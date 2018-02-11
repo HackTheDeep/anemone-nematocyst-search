@@ -5,7 +5,7 @@ $(function() {
     var featureParams = {
       1: {
         min: 2,
-        max: 3
+        max: 100
       },
       2: {
         min: 5,
@@ -26,7 +26,8 @@ $(function() {
       url: '/search?' + $.param(featureParams)
     }).done(function(response) {
       // render the images
-      $('#results').append(response);
+      console.log(response);
+      // $('#results').html(response);
     });
   });
 });
