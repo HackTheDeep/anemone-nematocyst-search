@@ -19,16 +19,25 @@ class MainController < ApplicationController
     query = params.to_unsafe_h
     query.delete(:action)
     query.delete(:controller)
-    results = Measurement.search(query)
-    presented_results = results.map do |meas|
-      {
-        :feature_id => meas.feature_id,
-        :metric => meas.metric,
-        :image_url => meas.image.url,
-      }
+    measurements = Measurement.search(query)
+    presented_results = { :images => {} }
+    measurements.each do |meas|
+      presented_results[:images][meas.image.id] ||= {}
+      presented_results[:images][meas.image.id][:url] ||= meas.image.url
+      presented_results[:images][meas.image.id][:measurements] ||= []
+      presented_results[:images][meas.image.id][:measurements] << { :feature_id => meas.feature_id, :metric => meas.metric }
+    end
+
+    # such a hack
+    presented_results[:images].each do |img_id, img_data|
+      if img_data[:measurements].count < 4
+        presented_results[:images].delete(img_id)
+      end
     end
 
     render :json => presented_results
+  rescue StandardError => e
+    render :json => { :message => e.message, :class => e.class }, :status => 500
   end
 
   # GET /features
