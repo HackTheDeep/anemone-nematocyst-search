@@ -19,7 +19,7 @@ puts "Seeded features"
 
 
 require 'csv'
-data_path = '../anemone-nematocyst-database/data/image_database.csv'
+data_path = '../anemone-nematocyst-database/image_database.csv'
 CSV.foreach(data_path, headers: true) do |row|
   if row['path'].match(/Streamline/) # only load streamline process image dir
     Image.create!(
