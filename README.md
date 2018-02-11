@@ -27,3 +27,16 @@ Questions arose how to parse the data for the database and how to pull the data 
 - What other paths future work on this project could take
 
 The data base and search can increase in feature which would add to the columns and associated sliders. These features that go beyond width and height could include curvatures, roundness of cells and number of barbs in the harpoon. 
+
+
+## How to set up for local development
+1. install https://postgresapp.com/
+2. install ruby 2.4.0 https://www.ruby-lang.org/en/documentation/installation/
+3. install bundler http://bundler.io/
+4. clone this repo `git clone git@github.com:HackTheDeep/anemone-nematocyst-search.git`
+5. install dependencies `bundle install`
+6. create database `rake db:create`
+7. migrate that database `rake db:migrate`
+8. then seed that database `rake db:seed`
+
+Keep in mind, adding new images to the csv requires the imagemagick transform to be applied.  This will bring in those tif images as jpg thumbnails
