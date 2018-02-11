@@ -26,7 +26,9 @@ class MainController < ApplicationController
   # &features[][min]=30
   #
   def search
-    render :json => params
+    results = Measurement.search(params)
+
+    render :json => results.map(&:metric)
   end
 
   def features
