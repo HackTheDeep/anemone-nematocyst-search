@@ -40,6 +40,9 @@ $(function() {
           var measHtml = '';
           $.each(imageData.measurements, function(meas) {
             var f = window.features[meas.feature_id];
+            if (!f) {
+              console.log(meas);
+            }
             measHtml = measHtml + "<p>" + f.desc + ': ' + meas.metric + "</p>"
           });
           var html = "<div class='col-sm-4'> \
