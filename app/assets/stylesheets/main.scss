@@ -12,10 +12,21 @@
       }
     }
   }
-  .slider-container {
-    padding: 20px;
-  }
-  .image-unit {
-    padding: 20px;
+  .content-wrapper {
+    padding: 50px;
+    .slider-container {
+      padding: 20px;
+    }
+    .image-unit {
+      padding: 20px;
+      .metrics {
+
+      }
+    }
+    .sketchfab-embed-wrapper {
+      iframe {
+        max-width: 100%;
+      }
+    }
   }
 }

@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row content-wrapper">
     <div class="col-sm-6">
       <div class="slider-container">
         <% @features.each do |feature| %>
@@ -18,7 +18,7 @@
             <p></p>
             <p>
               <label for="desc"><%= feature.desc %>:</label>
-              <input type="text" id="desc-<%= feature.id %>" readonly>
+              <input type="text" class="sliderValue" data-index="slider-range-<%= feature.id %>" readonly>
             </p>
             <div class="slider-range" id="slider-range-<%= feature.id %>"></div>
           </div>
@@ -29,7 +29,14 @@
     </div>
     <div class="col-sm-6">
       <div class="row" id="results">
-
+        <div class="sketchfab-embed-wrapper">
+          <iframe width="640" height="480" src="https://sketchfab.com/models/72bc781e772e46808ded8e02c8b66ceb/embed" frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+          <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+            <a href="https://sketchfab.com/models/72bc781e772e46808ded8e02c8b66ceb?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">nematocysts_Mechanism-02b</a>
+            by <a href="https://sketchfab.com/SamSpaeth?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sam Spaeth</a>
+            on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
