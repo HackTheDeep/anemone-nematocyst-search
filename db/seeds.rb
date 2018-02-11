@@ -22,7 +22,7 @@ images = [
 ]
 
 images.each do |filename|
-  Image.create!(:filename => filename)
+  Image.create!(:filename => filename, :url => 'http://via.placeholder.com/150x150')
 end
 
 features = Feature.all
