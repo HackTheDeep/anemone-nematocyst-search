@@ -37,12 +37,21 @@ $(function() {
           var taxa = imageData.taxa;
           var tissue = imageData.tissue;
           var specimen = imageData.specimen;
-          var meas = imageData.measurements;
-
-          var html = "<div class='col-sm-4 image-unit'> \
-          <img src=" + url + ">\
-          <div class='metrics'>Metrics:" + JSON.stringify(meas) + "</div> \
-          </div>"
+          var measHtml = '';
+          $.each(imageData.measurements, function(meas) {
+            var f = window.features[meas.feature_id];
+            measHtml = measHtml + "<p>" + f.desc + ': ' + meas.metric + "</p>"
+          });
+          var html = "<div class='col-sm-4'> \
+          <div class='image-unit'> \
+          <img src=" + url + "> \
+          <div class='metrics'> \
+          <p>Taxa:" + taxa + "</p> \
+          <p>Tissue:" + tissue + "</p> \
+          <p>Specimen:" + specimen + "</p> \
+          " + measHtml + " \
+          Metrics:" + JSON.stringify(meas) + "</div> \
+          </div></div>"
           images.push(html);
         });
         $('#results').html(images);
@@ -50,5 +59,10 @@ $(function() {
         $('#results').html("<h2>No Match Found</h2>");
       }
     });
+  });
+
+  $("#results").on( "click", ".image-unit", function() {
+    $('.metrics').css("display", "none");
+    $(this).find('.metrics').css("display", "block");
   });
 });

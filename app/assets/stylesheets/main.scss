@@ -19,8 +19,21 @@
     }
     .image-unit {
       padding: 20px;
+      position: relative;
+      img {
+        max-width: 100%;
+      }
       .metrics {
-
+        padding: 10px;
+        background: #ddd;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: none;
+        p {
+          margin: 0;
+        }
       }
     }
     .sketchfab-embed-wrapper {

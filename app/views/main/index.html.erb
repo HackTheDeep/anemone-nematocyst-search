@@ -14,8 +14,11 @@
     <div class="col-sm-6">
       <div class="slider-container">
         <% @features.each do |feature| %>
-          <div class="feature" id='slider-<%= feature.id %>'>
-            <p></p>
+          <div
+            class="feature"
+            id='slider-<%= feature.id %>'
+            data-id='<%= feature.id %>'
+            data-desc='<%= feature.desc %>'>
             <p>
               <label for="desc"><%= feature.desc %>:</label>
               <input type="text" class="sliderValue" data-index="slider-range-<%= feature.id %>" readonly>
@@ -37,7 +40,50 @@
             on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
           </p>
         </div>
+
+        <!-- <div class='col-sm-4'>
+          <div class="image-unit">
+            <%= image_tag "logo_amnh.jpg" %>
+            <div class='metrics'>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+            </div>
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <div class="image-unit">
+            <%= image_tag "logo_amnh.jpg" %>
+            <div class='metrics'>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+            </div>
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <div class="image-unit">
+            <%= image_tag "logo_amnh.jpg" %>
+            <div class='metrics'>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+              <p>feature: Value</p>
+            </div>
+          </div>
+        </div> -->
+
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  window.features = {}
+  var items = $('.feature');
+  $.each(items, function(featureId, feature) {
+    features[$(feature).data('id')] = $(feature).data('desc');
+  });
+</script>
