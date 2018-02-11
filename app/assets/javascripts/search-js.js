@@ -25,9 +25,15 @@ $(function() {
       method: 'GET',
       url: '/search?' + $.param(featureParams)
     }).done(function(response) {
-      // render the images
-      console.log(response);
-      // $('#results').html(response);
+      var images = [];
+      $.each(response, function(key, value) {
+        console.log(value);
+        var html = "<div class='col-sm-4 image-unit'> \
+        <img src=" + value['image_url'] + "></div> \
+        <div>Metric:" + value['metric'] + "</div>"
+        images.push(html);
+      });
+      $('#results').html(images);
     });
   });
 });
