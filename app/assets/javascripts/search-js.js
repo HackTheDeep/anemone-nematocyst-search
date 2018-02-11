@@ -8,16 +8,16 @@ $(function() {
         max: 100
       },
       2: {
-        min: 5,
-        max: 10
+        min: 1,
+        max: 100
       },
       3: {
         min: 15,
-        max: 35
+        max: 350
       },
       4: {
         min: 6,
-        max: 12
+        max: 120
       }
     }
 
@@ -26,13 +26,18 @@ $(function() {
       url: '/search?' + $.param(featureParams)
     }).done(function(response) {
       var images = [];
-      $.each(response, function(key, value) {
-        console.log(value);
-        var html = "<div class='col-sm-4 image-unit'> \
-        <img src=" + value['image_url'] + "></div> \
-        <div>Metric:" + value['metric'] + "</div>"
-        images.push(html);
-      });
+      console.log("Searched and got:", response.images)
+      if (!$.isEmptyObject(response.images)) {
+        $.each(response.images, function(imageId, imageData) {
+          var url = imageData.url;
+          var meas = imageData.measurements;
+
+          var html = "<div class='col-sm-4 image-unit'> \
+          <img src=" + url + "></div> \
+          <div>Metrics:" + JSON.stringify(meas) + "</div>"
+          images.push(html);
+        });
+      }
       $('#results').html(images);
     });
   });
