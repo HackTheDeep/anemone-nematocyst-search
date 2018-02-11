@@ -20,7 +20,7 @@ cl = Feature.where(:desc => "capsule length").first
 cw = Feature.where(:desc => "capsule width").first
 
 require 'csv'
-data_path = '../anemone-nematocyst-database/image_database.csv'
+data_path = './data/image_database.csv'
 CSV.foreach(data_path, headers: true) do |row|
   if row['path'].match(/Streamline/) # only load streamline process image dir
     i = Image.create!(
