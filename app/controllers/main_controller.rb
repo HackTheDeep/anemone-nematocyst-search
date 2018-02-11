@@ -1,7 +1,10 @@
 class MainController < ApplicationController
 
+  def index
+    @features = Feature.all
+  end
+
   # GET /search
-  #
   # params = {
   #   1 => {
   #     :min => 20,
@@ -14,7 +17,6 @@ class MainController < ApplicationController
   #   ...
   # }
   #
-  # GET /search
   def search
     query = params.to_unsafe_h
     query.delete(:action)

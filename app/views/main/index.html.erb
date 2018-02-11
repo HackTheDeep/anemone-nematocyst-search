@@ -12,25 +12,20 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-      <p>Organelle Size Range</p>
-      <form>
-        <div>
-          <input type="text" class="sliderValue" data-index="0" value="10" />
-          <input type="text" class="sliderValue" data-index="1" value="90" />
-        </div>
+      <div class="slider-container">
+        <% @features.each do |feature| %>
+          <div class="feature" id='slider-<%= feature.id %>'>
+            <p></p>
+            <p>
+              <label for="desc"><%= feature.desc %>:</label>
+              <input type="text" id="desc-<%= feature.id %>" readonly>
+            </p>
+            <div class="slider-range" id="slider-range-<%= feature.id %>"></div>
+          </div>
+        <% end %>
         <br />
-        <div id="slider"></div>
-      </form>
-      <p>Capsule Size Range</p>
-      <form>
-        <div>
-          <input type="text" class="sliderValue" data-index="0" value="10" />
-          <input type="text" class="sliderValue" data-index="1" value="90" />
-        </div>
-        <br />
-        <div id="slider"></div>
-      </form>
-      <input type='submit' value='search' class="search btn btn-primary" />
+        <input type='submit' value='search' class="search btn btn-primary" />
+      </div>
     </div>
     <div class="col-sm-6">
       <div class="row" id="results">
