@@ -26,11 +26,14 @@ class MainController < ApplicationController
     measurements.each do |meas|
       presented_results[:images][meas.image.id] ||= {}
       presented_results[:images][meas.image.id][:url] ||= meas.image.url
+      presented_results[:images][meas.image.id][:taxa] ||= meas.image.taxa
+      presented_results[:images][meas.image.id][:specimen] ||= meas.image.specimen
+      presented_results[:images][meas.image.id][:tissue] ||= meas.image.tissue
       presented_results[:images][meas.image.id][:measurements] ||= []
       presented_results[:images][meas.image.id][:measurements] << { :feature_id => meas.feature_id, :metric => meas.metric }
     end
 
-    # such a hack
+    # hack to exclude partial matches
     presented_results[:images].each do |img_id, img_data|
       if img_data[:measurements].count < 4
         presented_results[:images].delete(img_id)
