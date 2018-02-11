@@ -16,7 +16,10 @@ class MainController < ApplicationController
   #
   # GET /search
   def search
-    results = Measurement.search(params)
+    query = params.to_unsafe_h
+    query.delete(:action)
+    query.delete(:controller)
+    results = Measurement.search(query)
     attr_whitelist = [:feature_id, :metric]
 
     render :json => present(results, attr_whitelist)
