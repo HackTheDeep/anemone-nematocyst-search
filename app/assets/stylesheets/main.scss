@@ -21,7 +21,7 @@
       }
     }
     .image-unit {
-      padding: 20px;
+      padding: 10px 0;
       position: relative;
       &:hover img {
         visibility: hidden;
@@ -39,7 +39,6 @@
         top: 0;
         left: 0;
         width: 100%;
-        // display: none;
         visibility: hidden;
         z-index: 1;
         font-size: 12px;
