@@ -33,29 +33,27 @@ CSV.foreach(data_path, headers: true) do |row|
 end
 
 
-# files = Dir.glob('./rawimg/**/*.*')
-# files.each do |file|
-#   output = file.split('rawimg/').last.split('.')[-2] + '.jpg'
-#   puts system("convert #{file} -units PixelsPerInch -density 72 -quality 80 -resize 200 ./public/images/#{output}")
+# # should only be necessary once to generate asset.  then just commit them
+# Image.all.each do |img|
+#   file = "./rawimg/#{img.filename}"
+#   if File.exist?(file)
+#     puts "Converting file #{file}..."
+#     output = Digest::SHA256.hexdigest(img.filename) + '.jpg'
+#     system("convert '#{file}' -units PixelsPerInch -density 72 -quality 80 -resize 200 ./public/images/#{output}")
+#   else
+#     puts "Couldn't find file at #{file}"
+#   end
 # end
 
 # puts "Finished converting files"
 
-# # TODO: get images from public/images dir
-# images = [
-#   "image001.tiff",
-#   "image002.tiff",
-#   "image003.tiff",
-#   "image004.tiff",
-#   "image005.tiff",
-#   "image006.tiff",
-#   "image007.tiff",
-#   "image008.tiff",
-#   "image009.tiff",
-# ]
 
-# images.each do |filename|
-# end
+Image.all.each do |img|
+  output = Digest::SHA256.hexdigest(img.filename) + '.jpg'
+  img.url = "images/#{output}"
+  img.save!
+end
+
 
 features = Feature.all
 Image.all.each do |image|
@@ -72,3 +70,5 @@ Image.all.each do |image|
     )
   end
 end
+
+puts "Finished adding metrics"
