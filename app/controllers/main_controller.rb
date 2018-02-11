@@ -20,9 +20,15 @@ class MainController < ApplicationController
     query.delete(:action)
     query.delete(:controller)
     results = Measurement.search(query)
-    attr_whitelist = [:feature_id, :metric]
+    presented_results = results.map do |meas|
+      {
+        :feature_id => meas.feature_id,
+        :metric => meas.metric,
+        :image_url => meas.image.url,
+      }
+    end
 
-    render :json => present(results, attr_whitelist)
+    render :json => presented_results
   end
 
   # GET /features

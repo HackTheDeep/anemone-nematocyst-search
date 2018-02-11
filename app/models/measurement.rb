@@ -11,6 +11,6 @@ class Measurement < ApplicationRecord
         map(&:id)
     end.flatten.uniq
 
-    Measurement.where(:id => measurement_ids)
+    Measurement.includes(:image).where(:id => measurement_ids)
   end
 end
