@@ -14,20 +14,45 @@ puts "Seeded features"
 
 
 
-
-
-
+ol = Feature.where(:desc => "organelle length").first
+ow = Feature.where(:desc => "organelle width").first
+cl = Feature.where(:desc => "capsule length").first
+cw = Feature.where(:desc => "capsule width").first
 
 require 'csv'
-data_path = '../anemone-nematocyst-database/image_database.csv'
+data_path = './data/image_database.csv'
 CSV.foreach(data_path, headers: true) do |row|
   if row['path'].match(/Streamline/) # only load streamline process image dir
-    Image.create!(
+    i = Image.create!(
       :url => 'images/sample.jpg',
       :filename => row['path'],
       :taxa => row['taxa'],
       :specimen => row['specimen'],
       :tissue => row['tissue'],
+    )
+
+    Measurement.create!(
+      :image => i,
+      :feature => ol,
+      :metric => row['length'],
+    )
+
+    Measurement.create!(
+      :image => i,
+      :feature => ow,
+      :metric => row['width'],
+    )
+
+    Measurement.create!(
+      :image => i,
+      :feature => cl,
+      :metric => row['length'],
+    )
+
+    Measurement.create!(
+      :image => i,
+      :feature => cw,
+      :metric => row['width'],
     )
   end
 end
@@ -55,20 +80,3 @@ Image.all.each do |img|
 end
 
 
-features = Feature.all
-Image.all.each do |image|
-  features.each do |feature|
-    metric = if feature.desc.match(/length/)
-      rand(100) + 50
-    else
-      rand(20)
-    end
-    Measurement.create!(
-      :image => image,
-      :feature => feature,
-      :metric => metric,
-    )
-  end
-end
-
-puts "Finished adding metrics"
