@@ -39,16 +39,16 @@ $(function() {
           var specimen = imageData.specimen;
           var measHtml = '';
           imageData.measurements.forEach(function(meas) {
-            var f = window.features[meas.feature_id];
-            measHtml = measHtml + "<p>" + f.desc + ': ' + meas.metric + "</p>"
+            var desc = window.features[meas.feature_id];
+            measHtml = measHtml + "<p>" + desc + ': ' + meas.metric + "</p>"
           });
           var html = "<div class='col-sm-4'> \
           <div class='image-unit'> \
           <img src=" + url + "> \
           <div class='metrics'> \
-          <p>Taxa:" + taxa + "</p> \
-          <p>Tissue:" + tissue + "</p> \
-          <p>Specimen:" + specimen + "</p> \
+          <p>Taxa: " + taxa + "</p> \
+          <p>Tissue: " + tissue + "</p> \
+          <p>Specimen: " + specimen + "</p> \
           " + measHtml + " \
           </div></div>"
           images.push(html);
