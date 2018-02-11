@@ -2,29 +2,17 @@ class MainController < ApplicationController
 
   # GET /search
   #
-  # params should equal -> {
-  #   :features => [
-  #     {
-  #       :id => 1
-  #       :min => 20,
-  #       :max => 50,
-  #     },
-  #     {
-  #       :id => 2
-  #       :min => 30,
-  #       :max => 90,
-  #     },
-  #     ...
-  #   ]
+  # params = {
+  #   1 => {
+  #     :min => 20,
+  #     :max => 50,
+  #   },
+  #   2 => {
+  #     :min => 20,
+  #     :max => 50,
+  #   },
+  #   ...
   # }
-  #
-  # ?features[][id]=1
-  # &features[][max]=50
-  # &features[][min]=20
-  # &features[][id]=2
-  # &features[][max]=90
-  # &features[][min]=30
-  #
   #
   # GET /search
   def search

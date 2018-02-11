@@ -28,18 +28,14 @@ describe Measurement do
       )
 
       params = {
-        :features => [
-          {
-            :id => f1.id,
-            :min => 2,
-            :max => 10,
-          },
-          {
-            :id => f2.id,
-            :min => 2,
-            :max => 10,
-          }
-        ]
+        f1.id => {
+          :min => 2,
+          :max => 10,
+        },
+        f2.id => {
+          :min => 2,
+          :max => 10,
+        }
       }
 
       results = Measurement.search(params)

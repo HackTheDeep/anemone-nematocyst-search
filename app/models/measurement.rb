@@ -3,11 +3,11 @@ class Measurement < ApplicationRecord
   belongs_to :feature
 
   def self.search(params)
-    measurement_ids = params[:features].map do |fp|
+    measurement_ids = params.map do |feature_id, p|
       Measurement.
         select(:id).
-        where(:feature_id => fp[:id]).
-        where(:metric => fp[:min]...fp[:max]).
+        where(:feature_id => feature_id).
+        where(:metric => p[:min]...p[:max]).
         map(&:id)
     end.flatten.uniq
 
