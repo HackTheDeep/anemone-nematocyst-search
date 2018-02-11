@@ -60,8 +60,8 @@ $(function() {
     });
   });
 
-  $("#results").on( "click", ".image-unit", function() {
-    $('.metrics').css("display", "none");
-    $(this).find('.metrics').css("display", "block");
-  });
+  // $("#results").on( "click", ".image-unit", function() {
+  //   $('.metrics').css("display", "none");
+  //   $(this).find('.metrics').css("display", "block");
+  // });
 });

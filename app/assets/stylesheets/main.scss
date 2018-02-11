@@ -16,10 +16,19 @@
     padding: 50px;
     .slider-container {
       padding: 20px;
+      .feature {
+        padding: 10px 0;
+      }
     }
     .image-unit {
       padding: 20px;
       position: relative;
+      &:hover img {
+        visibility: hidden;
+      }
+      &:hover .metrics {
+        visibility: visible;
+      }
       img {
         max-width: 100%;
       }
@@ -30,7 +39,10 @@
         top: 0;
         left: 0;
         width: 100%;
-        display: none;
+        // display: none;
+        visibility: hidden;
+        z-index: 1;
+        font-size: 12px;
         p {
           margin: 0;
         }
